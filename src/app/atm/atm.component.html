@@ -1,0 +1,35 @@
+<h1>{{title}}</h1>
+<br>
+<div>
+  <label for="slcFrom">Currency From: </label>
+  <select id="slcFrom" #selectFrom (change)="onSelectedFrom(selectFrom.value)">
+    <option value="">--- Select ---</option>
+    <option *ngFor="let i of countries" [value]="i.code">{{i.name+" - "+i.code+" ("+i.symbol+")"}}</option> 
+  </select>
+</div>
+<br>
+<div>
+  <label for="slcTo">Currency To: </label>
+  <select id="slcTo" #selectTo (change)="onSelectedTo(selectTo.value)">
+    <option value="">--- Select ---</option>
+    <option *ngFor="let i of countries" [value]="i.code">{{i.name+" - "+i.code+" ("+i.symbol+")"}}</option> 
+  </select>
+  
+</div>
+<br>
+<div>
+  <label for="txtRate">Rate: </label>
+  <input id="spnConvert" disabled value="{{convert}}">
+</div>
+<br>
+<div>
+  <label for="txtAmount">Amount: </label>
+  <input id="txtAmount" (input)="txtConvert=$event.target.value" value="1">
+  &nbsp;
+  <button (click)="convertEvent()">OK</button>
+</div>
+<br>
+<div>
+  <label for="txtResult">Result: </label>
+  <input id="txtResult" disabled value="{{result}}">
+</div>
